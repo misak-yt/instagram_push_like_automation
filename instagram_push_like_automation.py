@@ -9,6 +9,7 @@ import time
 import datetime
 import bs4
 import random
+import getpass
 
 def now():
     now = datetime.datetime.now()
@@ -25,7 +26,7 @@ def access_and_login(driver, username, password):
     time.sleep(1)
 
     driver.find_element_by_xpath('//*[@id="loginForm"]/div/div[3]').click()
-    time.sleep(2)
+    time.sleep(3)
     print (now()+'instagramにログインしました')
     time.sleep(1)
 
@@ -95,7 +96,7 @@ def push_like(driver, like):
 
 def main():
     username = input('username: ')
-    password = input('password: ')
+    password = getpass.getpass()
     tag = input('tag: ').split('\n')
     tag_name = random.choice(tag)
     like = int(input('いいねする数: '))
