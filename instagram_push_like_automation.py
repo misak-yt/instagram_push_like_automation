@@ -44,7 +44,7 @@ def move(driver, actions):
     actions.move_to_element(target)
     actions.perform()
     print (now()+'最新の投稿に移動しました')
-    time.sleep(2)
+    time.sleep(3)
 
 
 #過去にイイねをしたか確認
@@ -52,7 +52,7 @@ def check_like(driver):
     html = driver.page_source.encode('utf-8')
     soup = bs4.BeautifulSoup(html, "html5lib") 
     a = soup.select('span._aamw')
-    return  not 'いいねを取り消す' in str(a[0])
+    return  not '取り消す' in str(a[0])
 
 #直近の投稿にいいね
 def push_like(driver, like):
@@ -76,7 +76,7 @@ def push_like(driver, like):
         try:
             driver.find_element_by_xpath('//*[@class=" _aaqg _aaqh"]/button').click()
             print (now() + '次の投稿へ移動しました')
-            time.sleep(random.randint(1, 3))
+            time.sleep(3)
         except WebDriverException:
             print (now() + '{}つ目の位置でエラーが発生しました'.format(i + 2))
             time.sleep(random.randint(2, 4))
